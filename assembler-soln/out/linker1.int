@@ -1,0 +1,7 @@
+lw $a0 0 $sp
+jal func2
+addiu $t3 $v0 0
+jr $ra
+lui $at 43981
+ori $v0 $at 4660
+jr $ra

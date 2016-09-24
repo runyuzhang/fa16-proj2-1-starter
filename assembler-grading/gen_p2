@@ -1,0 +1,1 @@
+./assembler -p2 test_input/${1}.s test_output/${1}.out -log test_log/${1}.txt

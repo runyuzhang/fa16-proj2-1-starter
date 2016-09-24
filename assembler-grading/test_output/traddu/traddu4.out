@@ -1,0 +1,4 @@
+addu $t0 $t0 $t0
+addu $t0 $t0 $t0
+addu $t2 $t2 $0
+addu $t1 $t2 $t1

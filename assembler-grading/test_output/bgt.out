@@ -1,0 +1,6 @@
+slt $at $t1 $t0
+bne $at $0 label1
+slt $at $t1 $t0
+bne $at $0 asdf
+slt $at $t1 $t0
+bne $at $0 label2

@@ -1,0 +1,4 @@
+addiu $t0 $0 0
+addiu $t0 $0 12345
+addiu $t0 $0 -32768
+addiu $t0 $0 32767

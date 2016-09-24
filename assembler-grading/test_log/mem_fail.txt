@@ -1,0 +1,3 @@
+Error - invalid instruction at line 1: lb $t0 -32769 $t1
+Error - invalid instruction at line 2: lb $t0 32768 $t1
+One or more errors encountered during assembly operation.

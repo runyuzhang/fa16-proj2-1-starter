@@ -1,0 +1,71 @@
+TESTING REPORT: PROJECT 2-1
+Student: Charles_P_Chamberlin
+Login: cs61c-bn
+
+translate_utils.c TESTS
+[ OK ] grade-translate 2/2
+[ OK ] grade-translate 2/2
+[ OK ] grade-translate 2/2
+[ OK ] grade-translate 2/2
+[ FAIL ] grade-translate 0/2
+
+Subscore: 8 out of 10
+
+tables.c TESTS
+[ OK ] grade-tables 3/3
+[ OK ] grade-tables 3/3
+[ OK ] grade-tables 3/3
+[ OK ] grade-tables 3/3
+[ FAIL ] grade_tables 0/3
+
+Subscore: 12 out of 15
+
+INSTRUCTION TESTS
+[ OK ] rtypes 3/3
+[ OK ] sll_pass 1/1
+[ FAIL ] sll_fail 0/1
+[ OK ] addiu_simple 1/1
+[ OK ] addiu_pass 1/1
+[ FAIL ] addiu_fail 0/1
+[ OK ] ori_simple 1/1
+[ OK ] ori_pass 1/1
+[ FAIL ] ori_fail 0/1
+[ OK ] lui_simple 1/1
+[ OK ] lui_pass 1/1
+[ FAIL ] lui_fail 0/1
+[ OK ] mem_simple 1/1
+[ FAIL ] mem_pass 0/1
+[ FAIL ] mem_fail 0/1
+[ OK ] jumps 2/2
+
+Subscore: 13 out of 19
+
+BRANCH TESTS
+[ OK ] grade_branch 1/1
+[ OK ] grade-branch 1/1
+
+Subscore: 2 out of 2
+
+PSEUDOINSTRUCTION TESTS
+[ OK ] li_simple 1/1
+[ FAIL ] li_pass 0/1
+[ FAIL ] li_addiu 0/1
+[ OK ] li_fail 1/1
+[ FAIL ] blt 0/1
+[ FAIL ] move 0/1
+[ FAIL ] bgt 0/1
+[ OK ] traddu 2/2
+
+Subscore: 4 out of 9
+
+COMMENT AND ERROR MESSAGE TESTS
+[ OK ] comments 1/1
+[ FAIL ] p1_errors 0/1
+[ FAIL ] p2_errors 0/1
+[ FAIL ] combined 0/2
+
+Subscore: 1 out of 5
+
+Total Score: 40 out of 60
+
+$ cs61c-bn,40

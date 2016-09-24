@@ -1,0 +1,3 @@
+Error - invalid instruction at line 1: addiu $t0 $t0 -32769
+Error - invalid instruction at line 2: addiu $t0 $t0 32768
+One or more errors encountered during assembly operation.

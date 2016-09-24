@@ -1,0 +1,4 @@
+lui $at 32768
+ori $t0 $at 0
+lui $at 65535
+ori $t0 $at 65535

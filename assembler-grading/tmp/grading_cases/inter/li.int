@@ -1,0 +1,24 @@
+lui $at 32768
+ori $t0 $at 0
+lui $at 65535
+ori $t0 $at 65535
+addiu $t0 $0 -32768
+lui $at 65535
+ori $t0 $at 32767
+addiu $t0 $0 32767
+lui $at 0
+ori $t0 $at 32768
+addiu $t0 $0 0
+lui $at 65532
+ori $t0 $at 26902
+addiu $t0 $0 12345
+lui $at 1883
+ori $t0 $at 52501
+lui $at 65534
+ori $t0 $at 63837
+lui $at 43981
+ori $t0 $at 61202
+lui $at 7
+ori $t0 $at 36667
+lui $at 0
+ori $t0 $at 65535

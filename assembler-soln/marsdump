@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# $1 = MIPS .s file to assemble
+# $2 = output location
+
+mars a dump .text HexText mars/$1.s input/$1.s
+diff out-exp/$1.out mars/$1.s
+

@@ -1,0 +1,6 @@
+sll $a0 $a0 3
+slt $at $a0 $a1
+bne $at $0 done
+jal func3
+addiu $v0 $v0 -1
+jr $ra

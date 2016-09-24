@@ -1,0 +1,71 @@
+TESTING REPORT: PROJECT 2-1
+Student: Aaron_Chong
+Login: cs61c-bk
+
+translate_utils.c TESTS
+[ OK ] grade-translate 2/2
+[ OK ] grade-translate 2/2
+[ FAIL ] grade-translate 0/2
+[ OK ] grade-translate 2/2
+[ OK ] grade-translate 2/2
+
+Subscore: 8 out of 10
+
+tables.c TESTS
+[ OK ] grade-tables 3/3
+[ OK ] grade-tables 3/3
+[ OK ] grade-tables 3/3
+[ OK ] grade-tables 3/3
+[ FAIL ] grade_tables 0/3
+
+Subscore: 12 out of 15
+
+INSTRUCTION TESTS
+[ OK ] rtypes 3/3
+[ OK ] sll_pass 1/1
+[ FAIL ] sll_fail 0/1
+[ OK ] addiu_simple 1/1
+[ FAIL ] addiu_pass 0/1
+[ OK ] addiu_fail 1/1
+[ OK ] ori_simple 1/1
+[ OK ] ori_pass 1/1
+[ OK ] ori_fail 1/1
+[ OK ] lui_simple 1/1
+[ OK ] lui_pass 1/1
+[ FAIL ] lui_fail 0/1
+[ OK ] mem_simple 1/1
+[ FAIL ] mem_pass 0/1
+[ OK ] mem_fail 1/1
+[ OK ] jumps 2/2
+
+Subscore: 15 out of 19
+
+BRANCH TESTS
+[ FAIL ] grade_branch 0/1
+[ FAIL ] grade-branch 0/1
+
+Subscore: 0 out of 2
+
+PSEUDOINSTRUCTION TESTS
+[ OK ] li_simple 1/1
+[ FAIL ] li_pass 0/1
+[ OK ] li_addiu 1/1
+[ FAIL ] li_fail 0/1
+[ OK ] blt 1/1
+[ FAIL ] move 0/1
+[ OK ] bgt 1/1
+[ FAIL ] traddu 0/2
+
+Subscore: 4 out of 9
+
+COMMENT AND ERROR MESSAGE TESTS
+[ OK ] comments 1/1
+[ OK ] p1_errors 1/1
+[ FAIL ] p2_errors 0/1
+[ FAIL ] combined 0/2
+
+Subscore: 2 out of 5
+
+Total Score: 41 out of 60
+
+$ cs61c-bk,41

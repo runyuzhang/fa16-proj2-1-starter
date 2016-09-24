@@ -1,0 +1,57 @@
+
+=====================================================================
+Part 1:
+-----------
+strlen()						~10 lines		X
+	String manipulation
+strncpy()						~10-15 lines	X
+	String manipulation
+copy_of_str() in string.s		~20 lines		X
+	Function calls
+-----------
+TODOS:
+-----------
+ -take out test_streq()
+
+
+=====================================================================	
+Part 2:
+-----------
+symbol_for_addr()				~10 lines		X
+	Basic linked list traversal
+addr_for_symbol()				~20-25 lines	X
+	Linked list traversal w/ fn alls
+add_to_list()					~25 lines		X	
+	Adding to linked list
+	
+-----------
+TODOS:
+-----------
+ -take out test print_list()
+
+=====================================================================	
+Part 3:
+-----------
+hex_to_str() in parsetools.s	~20 lines		X
+	Char-int duality
+is_jump():						~10 lines 		X
+	MIPS instructions
+calc_jump_addr(): 				~35 lines 		X
+	MIPS instructions
+
+-----------
+TODOS:
+-----------
+ -in test_parsetools, take out num and tests
+	
+=====================================================================	
+Part 4:
+-----------
+fill_data():					~50 lines 		X
+	function calls
+
+=====================================================================		
+Part 5:
+-----------
+write_output():
+	lol.

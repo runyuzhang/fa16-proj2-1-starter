@@ -1,0 +1,46 @@
+SPEC:
+
+translate_utils.c:
+Estimated time = 5 minutes
+
+Comments: translate_reg() just involves filling out register numbers.
+
+---------------------
+
+tables.c:
+Lines of code = 45
+Estimated time = 30 minutes
+
+Comments: mostly the same as vector.c from lab, or can use linked list
+Students might get tripped up trying to store string directly, but those
+who read the spec should get it.
+
+---------------------
+
+translate.c (write_pass_one):
+Lines of code = 20
+Estimated time = 30 minutes
+
+Comments: Could be a bit difficult to figure out lui?
+
+---------------------
+
+translate.c (pass two stuff):
+Lines of code = 120
+Estimated time = 1 hr?
+
+Comments:
+
+---------------------
+
+assembler.c:
+Lines of code = 40
+Estimated time = 30 minutes
+
+Comments: Mostly following example of pass two, so it shouldn't be hard
+
+---------------------
+
+Testing:
+
+Comments: Mostly running MARS

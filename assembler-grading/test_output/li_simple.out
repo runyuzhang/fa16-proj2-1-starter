@@ -1,0 +1,4 @@
+lui $at 1
+ori $t0 $at 4403
+lui $at 188
+ori $t0 $at 24910
