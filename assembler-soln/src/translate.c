@@ -33,7 +33,7 @@ const int TWO_POW_SEVENTEEN = 131072;    // 2^17
    The above should be helpful for you to implement lwb/swb.
 
    For sos/rsf, remember to skip the the dummy registers ($zero). If all the
-   registers are dummy registers, then skip that cycle (by output "add $0 $0 $0").
+   registers are dummy registers, then skip that cycle (by output "addu $0 $0 $0").
 
    MARS has slightly different translation rules for li, and it allows numbers
    larger than the largest 32 bit number to be loaded with li. You should follow
@@ -76,7 +76,7 @@ unsigned write_pass_one(FILE* output, const char* name, char** args, int num_arg
         } else {
             fprintf(output, "lui $at %u\n", (unsigned int)((num >> 16) & 0xFFFF));
             fprintf(output, "ori $at $at %u\n", (unsigned int)(num & 0xFFFF));
-            fprintf(output, "add $at %s $at\n", args[2]);
+            fprintf(output, "addu $at %s $at\n", args[2]);
             fprintf(output, "lw %s 0($at)\n", args[0]);
             return 4;
         }
@@ -95,7 +95,7 @@ unsigned write_pass_one(FILE* output, const char* name, char** args, int num_arg
         } else {
             fprintf(output, "lui $at %u\n", (unsigned int)((num >> 16) & 0xFFFF));
             fprintf(output, "ori $at $at %u\n", (unsigned int)(num & 0xFFFF));
-            fprintf(output, "add $at %s $at\n", args[2]);
+            fprintf(output, "addu $at %s $at\n", args[2]);
             fprintf(output, "sw %s 0($at)\n", args[0]);
             return 4;
         }
@@ -112,14 +112,14 @@ unsigned write_pass_one(FILE* output, const char* name, char** args, int num_arg
           }
         }
         if (valid_registers_count == 0){
-          fprintf(output, "add $0 $0 $0\n");
+          fprintf(output, "addu $0 $0 $0\n");
           return 1;
         }
-        fprintf(output, "add $sp $sp %d\n", -4*valid_registers_count);
+        fprintf(output, "addiu $sp $sp %d\n", -4*valid_registers_count);
         for (i = 0; i < 3; i++){
           int num = translate_reg(args[i]);
           if (num != 0){
-            fprintf(output, "sw %s %d($sp)\n", args[i], -4*i);
+            fprintf(output, "sw %s %d($sp)\n", args[i], 4*i);
           }
         }
         return valid_registers_count + 1;
@@ -136,7 +136,7 @@ unsigned write_pass_one(FILE* output, const char* name, char** args, int num_arg
         }
       }
       if (valid_registers_count == 0){
-        fprintf(output, "add $0 $0 $0\n");
+        fprintf(output, "addu $0 $0 $0\n");
         return 1;
       }
       for (i = 0; i < 3; i++){
@@ -145,7 +145,7 @@ unsigned write_pass_one(FILE* output, const char* name, char** args, int num_arg
           fprintf(output, "lw %s %d($sp)\n", args[i], 4*i);
         }
       }
-      fprintf(output, "add $sp $sp %d\n", 4*valid_registers_count);
+      fprintf(output, "addiu $sp $sp %d\n", 4*valid_registers_count);
       return valid_registers_count + 1;
     }
     write_inst_string(output, name, args, num_args);

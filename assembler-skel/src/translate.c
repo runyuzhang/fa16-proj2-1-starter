@@ -32,7 +32,7 @@ const int TWO_POW_SEVENTEEN = 131072;    // 2^17
    The above should be helpful for you to implement lwb/swb.
 
    For sos/rsf, remember to skip the the dummy registers ($zero). If all the
-   registers are dummy registers, then skip that cycle (by output "add $0 $0 $0").
+   registers are dummy registers, then skip that cycle (by output "addu $0 $0 $0").
 
    MARS has slightly different translation rules for li, and it allows numbers
    larger than the largest 32 bit number to be loaded with li. You should follow
