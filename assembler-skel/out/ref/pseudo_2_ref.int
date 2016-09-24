@@ -1,0 +1,19 @@
+lw $t0 99($t1)
+lw $t0 -99($t1)
+lui $at 45242
+ori $at $at 51966
+addu $at $t1 $at
+lw $t0 0($at)
+sw $t0 99($t1)
+lui $at 45242
+ori $at $at 51966
+addu $at $t1 $at
+sw $t0 0($at)
+addiu $sp $sp -8
+sw $t0 0($sp)
+sw $a1 4($sp)
+lw $t0 0($sp)
+lw $a1 4($sp)
+addiu $sp $sp 8
+addu $0 $0 $0
+addu $0 $0 $0
