@@ -1,5 +1,0 @@
-TESTING REPORT: PROJECT 2-1
-Student: YUE_LIU
-Login: cs61c-ah
-
-$ cs61c-ah,0

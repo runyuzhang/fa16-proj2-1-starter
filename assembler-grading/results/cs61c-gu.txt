@@ -1,5 +1,0 @@
-TESTING REPORT: PROJECT 2-1
-Student: Jiyu_Zhao
-Login: cs61c-gu
-
-$ cs61c-gu,0

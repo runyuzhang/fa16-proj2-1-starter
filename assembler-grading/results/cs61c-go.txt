@@ -1,5 +1,0 @@
-TESTING REPORT: PROJECT 2-1
-Student: John_Milton_Theios
-Login: cs61c-go
-
-$ cs61c-go,0

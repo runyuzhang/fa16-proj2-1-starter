@@ -1,5 +1,0 @@
-TESTING REPORT: PROJECT 2-1
-Student: Jongmin_Baek
-Login: cs61c-aq
-
-$ cs61c-aq,0
