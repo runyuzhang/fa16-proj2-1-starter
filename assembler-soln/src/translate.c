@@ -12,7 +12,7 @@ const int TWO_POW_SEVENTEEN = 131072;    // 2^17
 
 /* Writes instructions during the assembler's first pass to OUTPUT. The case
    for general instructions has already been completed, but you need to write
-   code to translate the li and blt pseudoinstructions. Your pseudoinstruction
+   code to translate the li and other pseudoinstructions. Your pseudoinstruction
    expansions should not have any side effects.
 
    NAME is the name of the instruction, ARGS is an array of the arguments, and
@@ -30,9 +30,10 @@ const int TWO_POW_SEVENTEEN = 131072;    // 2^17
         expand li into a single addiu instruction. Otherwise, expand it into
         a lui-ori pair.
 
-    For mul, quo, and rem, the expansions should be pretty straight forward if
-    you paid attention to the lecture slides about the subtleties of $hi and $lo
-    registers.
+   The above should be helpful for you to implement lwb/swb.
+
+   For sos/rsf, remember to skip the the dummy registers ($zero). If all the
+   registers are dummy registers, then skip that cycle (by output "add $0 $0 $0").
 
    MARS has slightly different translation rules for li, and it allows numbers
    larger than the largest 32 bit number to be loaded with li. You should follow
@@ -45,7 +46,7 @@ const int TWO_POW_SEVENTEEN = 131072;    // 2^17
  */
 unsigned write_pass_one(FILE* output, const char* name, char** args, int num_args) {
     /* SOLUTION CODE BELOW */
-    if (strcmp(name, "li") == 0 || strcmp(name, "lwb") || strcmp(name, "swb")) {
+    if (strcmp(name, "li") == 0) {
         if (num_args != 2) {
             return 0;
         }
@@ -65,32 +66,87 @@ unsigned write_pass_one(FILE* output, const char* name, char** args, int num_arg
         if (num_args != 3) {
             return 0;
         }
-        fprintf(output, "mult %s %s\n", args[1], args[2]);
-        fprintf(output, "mflo %s\n", args[0]);
-        return 2;
+        long int num;
+        if (translate_num(&num, args[1], INT32_MIN, UINT32_MAX) != 0) {
+            return 0;
+        }
+        if (num >= INT16_MIN && num <= INT16_MAX) {
+            fprintf(output, "lw %s %s(%s)\n", args[0], args[1], args[2]);
+            return 1;
+        } else {
+            fprintf(output, "lui $at %u\n", (unsigned int)((num >> 16) & 0xFFFF));
+            fprintf(output, "ori $at $at %u\n", (unsigned int)(num & 0xFFFF));
+            fprintf(output, "add $at %s $at\n", args[2]);
+            fprintf(output, "lw %s 0($at)\n", args[0]);
+            return 4;
+        }
+
     } else if (strcmp(name, "swb") == 0) {
         if (num_args != 3) {
             return 0;
         }
-        fprintf(output, "div %s %s\n", args[1], args[2]);
-        fprintf(output, "mflo %s\n", args[0]);
-        return 2;
+        long int num;
+        if (translate_num(&num, args[1], INT32_MIN, UINT32_MAX) != 0) {
+            return 0;
+        }
+        if (num >= INT16_MIN && num <= INT16_MAX) {
+            fprintf(output, "sw %s %s(%s)\n", args[0], args[1], args[2]);
+            return 1;
+        } else {
+            fprintf(output, "lui $at %u\n", (unsigned int)((num >> 16) & 0xFFFF));
+            fprintf(output, "ori $at $at %u\n", (unsigned int)(num & 0xFFFF));
+            fprintf(output, "add $at %s $at\n", args[2]);
+            fprintf(output, "sw %s 0($at)\n", args[0]);
+            return 4;
+        }
     } else if (strcmp(name, "sos") == 0) {
         if (num_args != 3) {
             return 0;
         }
-        fprintf(output, "div %s %s\n", args[1], args[2]);
-        fprintf(output, "mfhi %s\n", args[0]);
-
-        return 2;
-    } else if (strcmp(name, "rsf") == 0) {
-        if (num_args != 3) {
-            return 0;
+        int i, valid_registers_count;
+        valid_registers_count = 0;
+        for (i = 0; i < 3; i++){
+          int num = translate_reg(args[i]);
+          if (num != 0){
+            valid_registers_count += 1;
+          }
         }
-        fprintf(output, "div %s %s\n", args[1], args[2]);
-        fprintf(output, "mfhi %s\n", args[0]);
-
-        return 2;
+        if (valid_registers_count == 0){
+          fprintf(output, "add $0 $0 $0\n");
+          return 1;
+        }
+        fprintf(output, "add $sp $sp %d\n", -4*valid_registers_count);
+        for (i = 0; i < 3; i++){
+          int num = translate_reg(args[i]);
+          if (num != 0){
+            fprintf(output, "sw %s %d($sp)\n", args[i], -4*i);
+          }
+        }
+        return valid_registers_count + 1;
+    } else if (strcmp(name, "rsf") == 0) {
+      if (num_args != 3) {
+          return 0;
+      }
+      int i, valid_registers_count;
+      valid_registers_count = 0;
+      for (i = 0; i < 3; i++){
+        int num = translate_reg(args[i]);
+        if (num != 0){
+          valid_registers_count += 1;
+        }
+      }
+      if (valid_registers_count == 0){
+        fprintf(output, "add $0 $0 $0\n");
+        return 1;
+      }
+      for (i = 0; i < 3; i++){
+        int num = translate_reg(args[i]);
+        if (num != 0){
+          fprintf(output, "lw %s %d($sp)\n", args[i], 4*i);
+        }
+      }
+      fprintf(output, "add $sp $sp %d\n", 4*valid_registers_count);
+      return valid_registers_count + 1;
     }
     write_inst_string(output, name, args, num_args);
     return 1;

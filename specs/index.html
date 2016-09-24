@@ -269,7 +269,7 @@ git merge proj2-starter/proj2-1 -m "merge proj2 skeleton code"</pre>
 
       <p><tt>lwd</tt> and <tt>swd</tt> allow users to specify a 32-bit offset to the memory address instead of a 16-bit offset.</p>
 
-      <p><tt>sos</tt> takes in three registers, and allocates appropriate spaces for them on the stack to store. It should store registers in order of descending memory addresses. If less than 3 registers are to be stored, use the dummy register <tt>($zero)</tt> as a place holder. <b>Your generated MIPS should not waste the precious stack space! (by realizing to ignore the dummy registers.)</b></p>
+      <p><tt>sos</tt> takes in three registers, and allocates appropriate spaces for them on the stack to store. It should store registers in order of ascending memory addresses. If less than 3 registers are to be stored, use the dummy register <tt>($zero)</tt> as a place holder. <b>Your generated MIPS should not waste the precious stack space! (by realizing to ignore the dummy registers.)</b></p>
 
       <p><tt>rsf</tt> should work similarly.
 
